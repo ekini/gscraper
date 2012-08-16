@@ -2,12 +2,7 @@ import gconf
 from gconf import Url
 
 urls = [
-#Url("http://bla.com.ru", [("var", "value")]),
-Url("http://realty.ekini.info", [("var", "value")]),
+Url("http://blahblah.com", [("var", "value")]),
 ]
 #useragents = ["Opera",]
-#timeout
-
-#def handle_content(content):
-#    print content
 
