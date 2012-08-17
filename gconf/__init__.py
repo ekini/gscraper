@@ -3,10 +3,10 @@ import pkgutil
 from collections import namedtuple
 
 
-class Url(namedtuple("Url", "url data post")):
-    def __new__(cls, url, data, post=False):
+class Url(namedtuple("Url", "url data post cookie")):
+    def __new__(cls, url, data=[], post=False, cookie=[]):
         # add default values
-        return super(Url, cls).__new__(cls, url, data, post)
+        return super(Url, cls).__new__(cls, url, data, post, cookie)
 
 Proxy = namedtuple("Proxy", "address type")
 

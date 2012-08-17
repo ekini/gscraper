@@ -138,20 +138,23 @@ def load_projects():
 
 
 def getter(url, handle_content, handle_error, proxies, useragents):
+    """Gevent worker which fetches url and calls callbacks"""
     global timeout
     with gevent.Timeout(timeout):
-        #time = random.randrange(1, 10)
-        #print "Sleeping for %d seconds" % time
-        #gevent.sleep(time)
-        #proxy = urllib2.ProxyHandler(random.choice(proxies))
             try:
                 data = urllib.urlencode(url.data)
+                # if method is post
                 if url.post:
                     request = urllib2.Request(url.url, data)
                 else:
                     request = urllib2.Request(url.url + "?" + data)
+                # add cookies if we have any
+                if url.cookie:
+                    request.add_header('Cookie', urllib.urlencode(url.cookie))
+
                 request.add_header('User-agent', random.choice(useragents))
                 index = urllib2.urlopen(request)
+                # call handle_content callback
                 handle_content(url, index.info().headers, index.read())
             except Exception as e:
                 handle_error(url, e)
