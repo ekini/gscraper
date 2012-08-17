@@ -32,3 +32,16 @@ Also it **can** have variables:
 
 Please, look into 'gconf' directory for examples.
 
+How to generate urls
+--------------------
+
+_Urls_ variable is a list of urls. Each url is an instance of gconf.Url. This is a named tuple subclass.
+
+    class Url(url, data=[], post=False, cookie=[])
+
+There are variables:
+
+- url is a string with url,
+- data (optional) is a list of tuples (name, value),
+- post (optional) is a True or False indicating method POST and GET accordingly,
+- cookies (optional) is a list of tuples (name, value).

@@ -149,8 +149,8 @@ def getter(url, handle_content, handle_error, proxies, useragents):
                 else:
                     request = urllib2.Request(url.url + "?" + data)
                 # add cookies if we have any
-                if url.cookie:
-                    request.add_header('Cookie', urllib.urlencode(url.cookie))
+                if url.cookies:
+                    request.add_header('Cookie', urllib.urlencode(url.cookies))
 
                 request.add_header('User-agent', random.choice(useragents))
                 index = urllib2.urlopen(request)
